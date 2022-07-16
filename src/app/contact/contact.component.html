@@ -1,0 +1,77 @@
+<section class="vh-99 vw-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <div class="form-inputs w-100">
+          <h2 class="text-center">Kontakt z administratorem</h2>
+        </div>
+        <form [formGroup]="contactGroup">
+          <div class="p-inputgroup forms ">
+            <span class="p-float-label">
+              <input id="email" pInputText formControlName="email">
+              <label for="email">Twój email</label>
+            </span>
+          </div>
+          <div *ngIf="contactGroup.get('email')?.invalid &&
+        contactGroup.get('email')?.errors &&
+        (contactGroup.get('email')?.dirty || contactGroup.get('email')?.touched)">
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('email')?.hasError('required') ">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('email')?.hasError('email')">
+              To pole nie spełnia wymagań email*.
+            </small>
+          </div>
+          <div class="p-inputgroup forms">
+            <span class="p-float-label">
+              <input id="topic" pInputText formControlName="topic">
+              <label for="topic">Temat wiadomości</label>
+            </span>
+          </div>
+          <div *ngIf="contactGroup.get('topic')?.invalid &&
+        contactGroup.get('topic')?.errors &&
+        (contactGroup.get('topic')?.dirty || contactGroup.get('topic')?.touched)">
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('topic')?.hasError('required') ">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('topic')?.hasError('minlength')">
+              To pole wymaga minimalnie 10 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup forms">
+            <span class="p-float-label">
+              <textarea id="contents" rows="5" cols="30" pInputTextarea formControlName="contents"></textarea>
+              <label for="contents">Treść wiadomości</label>
+            </span>
+          </div>
+          <div *ngIf="contactGroup.get('contents')?.invalid &&
+        contactGroup.get('contents')?.errors &&
+        (contactGroup.get('contents')?.dirty || contactGroup.get('contents')?.touched)">
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('contents')?.hasError('required') ">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="contactGroup.get('contents')?.hasError('maxlength')">
+              To pole wymaga maksymalnie 200 znaków*.
+            </small>
+          </div>
+        </form>
+        <div class="w-100 forms">
+          <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+          <button pButton pRipple label="Wyślij" [disabled]="contactGroup.invalid" icon="pi pi-send" iconPos="right"
+                  class="p-button-rounded w-100" (click)="send()"></button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-5">
+        <img src="assets/contact.jpg"
+             class="img-fluid" alt="login image">
+      </div>
+    </div>
+  </div>
+</section>
+<p-toast position="bottom-right"></p-toast>

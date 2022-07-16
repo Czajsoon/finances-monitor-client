@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h1 class="navbar-brand title" routerLink="/strona_domowa">
+    <img src="assets/budget.svg" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
+    HOME-FINANCES
+  </h1>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div *ngIf="logged == true">
+      <ul class="navbar-nav">
+        <li>
+          <button pButton pRipple label="Twoje wydatki" routerLink="/twoje_wydatki" routerLinkActive="activate-route"
+                  class="p-button-text navigation_button"
+                  icon="pi pi-dollar"></button>
+        </li>
+        <li>
+          <button pButton pRipple label="Ustawienia Konta" routerLink="/ustawienia"  routerLinkActive="activate-route"
+                  class="p-button-text navigation_button"
+                  icon="pi pi-cog"></button>
+        </li>
+      </ul>
+    </div>
+    <ul class="navbar-nav">
+      <li>
+        <button pButton pRipple label="Strona głowna" routerLinkActive="activate-route"
+                routerLink="/strona_domowa"  class="login p-button-text navigation_button"
+                icon="pi pi-home"></button>
+      </li>
+      <li>
+        <button pButton pRipple label="Kontakt" routerLink="/kontakt" routerLinkActive="activate-route"
+                class="p-button-text navigation_button"
+                icon="pi pi-comment"></button>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="logged == false">
+    <button pButton pRipple routerLinkActive="activate-login" label="Zaloguj się"
+            (click)="goToLogin()" class="login" icon="pi pi-sign-in"></button>
+  </div>
+  <span *ngIf="logged == true && this.item.firstName != null && this.item.lastName != null" class="navbar-text greetings">
+     Witaj, {{this.item.firstName}} {{this.item.lastName}}!
+  </span>
+  <div *ngIf="logged == true">
+    <button pButton pRipple label="Wyloguj się" class="login" icon="pi pi-sign-out" (click)="logOut()"></button>
+  </div>
+</nav>
+<div style="padding-top: 60px"></div>

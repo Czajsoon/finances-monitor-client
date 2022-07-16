@@ -1,0 +1,61 @@
+.sumUp{
+  height: 10vh;
+  vertical-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidemenu{
+  height: 100%;
+}
+
+.new-recipe{
+  margin-top: 4vh;
+}
+
+.sumUpMenu{
+  z-index: -1000 !important;
+}
+
+.calendar{
+
+}
+
+.dial{
+  height: 300px;
+  position: fixed;
+  bottom: 0;
+  right: 5vw;
+}
+
+p-card-header{
+  text-align: center;
+}
+
+.dateLabel{
+  padding-left: 1vw;
+}
+
+.filters{
+}
+
+.monthPick{
+  width: 100%;
+}
+
+.spacer{
+  padding: 20px;
+}
+
+.spacer-1{
+  padding: 10px;
+}
+
+.pagination-spacer{
+  margin-top: 3%;
+}
+
+.action-spacer{
+  margin-right: 3%;
+}

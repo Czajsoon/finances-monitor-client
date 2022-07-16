@@ -1,0 +1,37 @@
+.info{
+  background-color: rgba(182,232,255,0.25);
+  border-radius: 10px;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+}
+
+.info1{
+  margin-top: 5vh;
+  background-color: rgba(182,232,255,0.25);
+  border-radius: 10px;
+  padding-bottom: 20px;
+  padding-top: 2vh;
+}
+
+.image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.centered {
+  position: absolute;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::ng-deep .p-card{
+  background-color: black !important;
+}
+
+

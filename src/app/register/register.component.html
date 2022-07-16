@@ -1,0 +1,104 @@
+<section class="vh-99 vw-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-6 col-lg-6 col-xl-5">
+        <img src="assets/register.jpg"
+             class="img-fluid" alt="register image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form [formGroup]="registration" (ngSubmit)="register()">
+          <div class=" form-inputs w-100">
+            <h2 class="text-center">Zarejestruj się</h2>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+            <input name="name" type="text" pInputText id="login" formControlName="login">
+            <label for="login">Login</label>
+          </span>
+          </div>
+          <div *ngIf="registration.get('login')?.invalid &&
+        registration.get('login')?.errors">
+            <small class="text-danger"
+                   *ngIf="registration.get('login')?.hasError('required') && (registration.get('login')?.dirty || registration.get('login')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="registration.get('login')?.hasError('minlength') && registration.get('login')?.dirty">
+              To pole wymaga 5 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon visibility" (click)="visibility_change()">
+              <i *ngIf="!visibility" class="pi pi-lock"></i>
+              <i *ngIf="visibility" class="pi pi-unlock"></i>
+            </span>
+            <div class="p-float-label">
+              <input pInputText id="passwordInput" class="form-control" formControlName="password" #password
+                     [type]="visibility? 'text' : 'password'">
+              <label for="passwordInput">Hasło</label>
+            </div>
+          </div>
+          <div *ngIf="registration.get('password')?.invalid &&
+        registration.get('password')?.errors">
+            <small class="text-danger"
+                   *ngIf="registration.get('password')?.hasError('required') && (registration.get('password')?.dirty || registration.get('password')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="registration.get('password')?.hasError('minlength') && registration.get('password')?.dirty">
+              To pole wymaga 8 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <span class="p-float-label">
+            <input pInputText id="passwordRepeat" type="password" formControlName="repeatedPassword">
+            <label for="passwordRepeat">Powtórz hasło</label>
+          </span>
+          </div>
+          <div *ngIf="registration.get('repeatedPassword')?.invalid &&
+        registration.get('repeatedPassword')?.errors">
+            <small class="text-danger"
+                   *ngIf="registration.get('repeatedPassword')?.hasError('required') && (registration.get('repeatedPassword')?.dirty || registration.get('repeatedPassword')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="registration.get('repeatedPassword')?.hasError('minlength') && registration.get('repeatedPassword')?.dirty">
+              To pole wymaga 8 znaków*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="registration.get('repeatedPassword')?.hasError('mustMatch') && registration.get('repeatedPassword')?.dirty">
+              Hasła się nie zgadzają*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs ">
+            <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+            <span class="p-float-label">
+            <input type="email" pInputText id="email" formControlName="email">
+            <label for="email">E-mail</label>
+          </span>
+          </div>
+          <div *ngIf="registration.get('email')?.invalid &&
+        registration.get('email')?.errors &&
+        (registration.get('email')?.dirty || registration.get('email')?.touched)">
+            <small class="text-danger"
+                   *ngIf="registration.get('email')?.hasError('email')">
+              To pole nie spełnia wymagań e-mail*.
+            </small>
+          </div>
+
+        <div class="register">
+          <button pButton pRipple label="Zarejestruj się" [disabled]="registration.invalid" icon="pi pi-check"
+                  class="p-button-rounded"></button>
+        </div>
+        </form>
+        <div class="login">
+          <button pButton pRipple label="Zaloguj się" routerLink="/logowanie" icon="pi pi-chevron-left"
+                  class="p-button-rounded"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<p-toast></p-toast>

@@ -1,0 +1,67 @@
+<section class="vh-99 vw-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-6 col-lg-6 col-xl-5">
+        <img src="assets/login.png"
+             class="img-fluid" alt="login image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <div class=" form-inputs w-100">
+          <h2 class="text-center">Zaloguj się</h2>
+        </div>
+        <form [formGroup]="logging" (ngSubmit)="login()">
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+              <input type="text" pInputText id="login" formControlName="log">
+              <label for="login">Login</label>
+            </span>
+          </div>
+          <div *ngIf="logging.get('log')?.invalid &&
+        logging.get('log')?.errors &&
+        (logging.get('log')?.dirty || logging.get('log')?.touched)">
+            <small class="text-danger"
+                   *ngIf="logging.get('log')?.hasError('required')">
+              To pole jest wymagane.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon visibility" (click)="visibility_change()">
+              <i *ngIf="!visibility" class="pi pi-lock"></i>
+              <i *ngIf="visibility" class="pi pi-unlock"></i>
+            </span>
+            <span class="p-float-label w-100">
+              <input pInputText [type]="visibility? 'text' : 'password'" #password class="w-100 p-inputgroup pass" id="password" formControlName="passw">
+              <label for="password">Hasło</label>
+          </span>
+          </div>
+          <div *ngIf="logging.get('passw')?.invalid &&
+        logging.get('passw')?.errors">
+            <small class="text-danger"
+                   *ngIf="logging.get('passw')?.hasError('required') && logging.get('passw')?.touched">
+              To pole jest wymagane.
+            </small>
+            <small class="text-danger"
+                   *ngIf="logging.get('passw')?.hasError('minlength') && (logging.get('passw')?.dirty || logging.get('passw')?.touched)">
+              To pole wymaga minimalnie 8 znaków.
+            </small>
+          </div>
+
+        <div>
+          <div class="login">
+            <button pButton pRipple [disabled]="logging.invalid"  class="p-button-rounded" type="submit"
+                    label="Zaloguj się" icon="pi pi-check"
+            ></button>
+          </div>
+          <div class="register">
+            <button pButton pRipple class="p-button-rounded"  type="submit" routerLink="/rejestracja"
+                    label="Zarejestruj się" icon="pi pi-chevron-right"
+            ></button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<p-toast></p-toast>

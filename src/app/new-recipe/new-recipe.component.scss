@@ -1,0 +1,50 @@
+.recipeHeader{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.recipeElement{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.recipeInput{
+  margin-top: 3.5vh;
+  margin-bottom: 3.5vh;
+}
+
+.recipeProduct{
+  margin-top: 3vh;
+}
+
+.AddProduct{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.leftActionButton{
+  margin-right: 2vw;
+}
+
+.container{
+  z-index: -100 !important;
+}
+
+.ui-datepicker {
+  z-index: -100000 !important;
+}
+
+.ActionButtonTop{
+  margin-top: 3vh;
+}
+
+.ActionButtonBottom{
+  margin-top: 6.5vh;
+}
+
+.dial{
+  height: 250px;
+  position: fixed;
+  bottom: 0;
+  right: 5vw;
+}

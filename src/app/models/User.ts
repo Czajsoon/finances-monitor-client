@@ -1,0 +1,7 @@
+export default interface User {
+  id: string,
+  login: string,
+  firstName: string,
+  lastName: string,
+  email: string
+}

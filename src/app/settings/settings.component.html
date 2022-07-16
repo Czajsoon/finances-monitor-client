@@ -1,0 +1,166 @@
+<p-dialog header="Zmiana hasła" [modal]="true" [draggable]="false" [resizable]="false" [(visible)]="displayBasic" [style]="{width: '60vw'}">
+  <form class="justify-content-center" [formGroup]="passwordChange">
+    <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon visibility" (click)="visibility_change()">
+              <i *ngIf="!visibility" class="pi pi-lock"></i>
+              <i *ngIf="visibility" class="pi pi-unlock"></i>
+            </span>
+      <div class="p-float-label">
+        <input pInputText id="passwordInput" class="form-control" formControlName="oldPassword"
+               [type]="visibility? 'text' : 'password'">
+        <label for="passwordInput">Aktualne hasło</label>
+      </div>
+    </div>
+    <div *ngIf="passwordChange.get('oldPassword')?.invalid &&
+        passwordChange.get('oldPassword')?.errors">
+      <small class="text-danger"
+             *ngIf="passwordChange.get('oldPassword')?.hasError('required') && (passwordChange.get('oldPassword')?.dirty || passwordChange.get('oldPassword')?.touched)">
+        To pole jest wymagane*.
+      </small>
+      <small class="text-danger"
+             *ngIf="passwordChange.get('oldPassword')?.hasError('minlength') && passwordChange.get('oldPassword')?.dirty">
+        To pole wymaga 8 znaków*.
+      </small>
+    </div>
+    <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon visibility" (click)="visibility_change1()">
+              <i *ngIf="!visibility1" class="pi pi-lock"></i>
+              <i *ngIf="visibility1" class="pi pi-unlock"></i>
+            </span>
+      <div class="p-float-label">
+        <input pInputText id="newPassword" class="form-control" formControlName="newPassword"
+               [type]="visibility1? 'text' : 'password'">
+        <label for="newPassword">Nowe hasło</label>
+      </div>
+    </div>
+    <div *ngIf="passwordChange.get('newPassword')?.invalid &&
+        passwordChange.get('newPassword')?.errors">
+      <small class="text-danger"
+             *ngIf="passwordChange.get('newPassword')?.hasError('required') && (passwordChange.get('newPassword')?.dirty || passwordChange.get('newPassword')?.touched)">
+        To pole jest wymagane*.
+      </small>
+      <small class="text-danger"
+             *ngIf="passwordChange.get('newPassword')?.hasError('minlength') && passwordChange.get('newPassword')?.dirty">
+        To pole wymaga 8 znaków*.
+      </small>
+    </div>
+    <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-lock"></i>
+            </span>
+      <div class="p-float-label">
+        <input pInputText id="newRepeatPassword" type="password" formControlName="newRepeatedPassword">
+        <label for="newRepeatPassword">Powtórz nowe hasło</label>
+      </div>
+    </div>
+    <div *ngIf="passwordChange.get('newRepeatedPassword')?.invalid &&
+        passwordChange.get('newRepeatedPassword')?.errors">
+      <small class="text-danger"
+             *ngIf="passwordChange.get('newRepeatedPassword')?.hasError('required') && (passwordChange.get('newRepeatedPassword')?.dirty || passwordChange.get('newRepeatedPassword')?.touched)">
+        To pole jest wymagane*.
+      </small>
+      <small class="text-danger"
+             *ngIf="passwordChange.get('newRepeatedPassword')?.hasError('minlength') && passwordChange.get('newRepeatedPassword')?.dirty">
+        To pole wymaga 8 znaków*.
+      </small>
+      <small class="text-danger"
+             *ngIf="passwordChange.get('newRepeatedPassword')?.hasError('mustMatch') && passwordChange.get('newRepeatedPassword')?.dirty">
+        Hasła się nie zgadzają*.
+      </small>
+    </div>
+    <div class="form-inputs w-100">
+      <button pButton pRipple label="Zmień hasło" icon="pi pi-lock" [disabled]="passwordChange.invalid"
+              class="p-button-rounded w-100" (click)="confirmPasswordChange()"></button>
+    </div>
+  </form>
+  <p-toast></p-toast>
+</p-dialog>
+<section class="vh-99 vw-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <div class="form-inputs w-100">
+          <h2 class="text-center">Ustawienia Konta</h2>
+        </div>
+        <div [formGroup]="settingsGroup">
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <div class="p-float-label">
+              <input type="text" id="login" pInputText formControlName="login">
+              <label for="login">Login</label>
+            </div>
+          </div>
+          <div *ngIf="settingsGroup.get('login')?.invalid &&
+        settingsGroup.get('login')?.errors">
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('login')?.hasError('required') && (settingsGroup.get('login')?.dirty || settingsGroup.get('login')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('login')?.hasError('minlength') && settingsGroup.get('login')?.dirty">
+              To pole wymaga 5 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-pencil"></i></span>
+            <div class="p-float-label">
+              <input type="text" id="firstName" pInputText formControlName="firstName">
+              <label for="firstName">Imię</label>
+            </div>
+          </div>
+          <div *ngIf="settingsGroup.get('firstName')?.invalid &&
+        settingsGroup.get('firstName')?.errors">
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('firstName')?.hasError('required') && (settingsGroup.get('firstName')?.dirty || settingsGroup.get('firstName')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('firstName')?.hasError('minlength') && settingsGroup.get('firstName')?.dirty">
+              To pole wymaga 3 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-pencil"></i></span>
+            <div class="p-float-label">
+              <input type="text" id="lastName" pInputText formControlName="lastName">
+              <label for="lastName">Nazwisko</label>
+            </div>
+          </div>
+          <div *ngIf="settingsGroup.get('lastName')?.invalid &&
+        settingsGroup.get('lastName')?.errors">
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('lastName')?.hasError('required') && (settingsGroup.get('lastName')?.dirty || settingsGroup.get('lastName')?.touched)">
+              To pole jest wymagane*.
+            </small>
+            <small class="text-danger"
+                   *ngIf="settingsGroup.get('lastName')?.hasError('minlength') && settingsGroup.get('lastName')?.dirty">
+              To pole wymaga 2 znaków*.
+            </small>
+          </div>
+          <div class="p-inputgroup form-inputs">
+            <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+            <div class="p-float-label">
+              <input type="text" id="email" pInputText formControlName="email">
+              <label for="email">Email</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-inputs w-100">
+          <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+          <button pButton pRipple label="Zapisz zmiany" [disabled]="settingsGroup.invalid || settingsGroup.untouched"
+                  (click)="confirm()" icon="pi pi-check"
+                  class="p-button-rounded w-100"></button>
+        </div>
+        <div class="form-inputs w-100">
+          <button pButton pRipple label="Zmień hasło" icon="pi pi-lock"
+                  class="p-button-rounded w-100" (click)="showBasicDialog()"></button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-5">
+        <img src="../../assets/settings.jpg"
+             class="img-fluid" alt="login image">
+      </div>
+    </div>
+  </div>
+</section>
+<p-toast></p-toast>
